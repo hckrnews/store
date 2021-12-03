@@ -1,7 +1,8 @@
-import { Arr } from '@hckrnews/arrays'
 import SearchResult from './search-result.js'
 import Search from './models/search.js'
 import SortDirection from './enums/sort-direction.js'
+import filterItems from './filter-items.js'
+import sortItems from './sort-items.js'
 
 class Store {
     #items = []
@@ -35,8 +36,9 @@ class Store {
 
       const from = search.size * search.page
       const result = this.#items.slice(from, from + search.size)
-      const sortedResult = new Arr(result).multisort(search.sortColumn, search.sortDirection.key)
-      return SearchResult.create({ items: sortedResult, totalCount: this.totalCount(), from, size: search.size })
+      const sortedResult = sortItems({ items: result, searchData: search })
+      const filteredItems = filterItems({ items: sortedResult, match: filters })
+      return SearchResult.create({ items: filteredItems, totalCount: this.totalCount(), from, size: search.size })
     }
 
     totalCount () {
