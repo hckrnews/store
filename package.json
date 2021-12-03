@@ -6,6 +6,7 @@
     "files": [
         "src/store.js",
         "src/search-result.js",
+        "src/sort-items.js",
         "src/filter-items.js",
         "src/enums/sort-direction.js",
         "src/models/search.js",
