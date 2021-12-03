@@ -1,10 +1,11 @@
 {
     "name": "@hckrnews/store",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "",
     "main": "./src/store.js",
     "files": [
-        "src/store.js"
+        "src/store.js",
+        "src/search-result.js"
     ],
     "scripts": {
         "lint": "standard src",

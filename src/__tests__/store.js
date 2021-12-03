@@ -1,7 +1,7 @@
 import { expect, describe, it } from '@jest/globals'
 import Store from '../store.js'
 
-const testStore = Store.create()
+const testStore = new Store()
 
 describe('Test the store', () => {
   it('It should add an item to the store', () => {
