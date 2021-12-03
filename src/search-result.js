@@ -28,6 +28,10 @@ class SearchResult {
       return this.#totalCount
     }
 
+    valueOf () {
+      return this.#items
+    }
+
     get from () {
       return this.#from
     }
@@ -41,10 +45,6 @@ class SearchResult {
     }
 
     get items () {
-      return this.#items
-    }
-
-    valueOf () {
       return this.#items
     }
 

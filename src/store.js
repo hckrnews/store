@@ -39,3 +39,6 @@ class Store {
 }
 
 export default Store
+export {
+  SearchResult
+}
