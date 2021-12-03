@@ -30,12 +30,6 @@ class Store {
     totalCount () {
       return this.#items.length
     }
-
-    static create () {
-      const store = new Store()
-
-      return store
-    }
 }
 
 export default Store

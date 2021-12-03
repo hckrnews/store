@@ -19,7 +19,7 @@ or
 ```javascript
 import Store from '../store.js'
 
-const testStore = Store.create()
+const testStore = new Store()
 
 testStore.addItem({ id: 42, value: 1 })
 testStore.addItem({ id: 43, value: 2 })
