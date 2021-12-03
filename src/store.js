@@ -38,7 +38,20 @@ class Store {
       const result = this.#items.slice(from, from + search.size)
       const sortedResult = sortItems({ items: result, searchData: search })
       const filteredItems = filterItems({ items: sortedResult, match: filters })
-      return SearchResult.create({ items: filteredItems, totalCount: this.totalCount(), from, size: search.size })
+      const filterOptions = [
+        {
+          label: 'example',
+          value: 'example',
+          count: 1
+        }
+      ]
+      return SearchResult.create({
+        items: filteredItems,
+        totalCount: this.totalCount(),
+        from,
+        size: search.size,
+        options: filterOptions
+      })
     }
 
     totalCount () {

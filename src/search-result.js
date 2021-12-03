@@ -3,6 +3,7 @@ class SearchResult {
     #totalCount = 0
     #from = 0
     #size = 10
+    #options = []
 
     setItems (items) {
       this.#items = items
@@ -18,6 +19,10 @@ class SearchResult {
 
     setSize (size) {
       this.#size = size
+    }
+
+    setOptions (options) {
+      this.#options = options
     }
 
     count () {
@@ -48,12 +53,13 @@ class SearchResult {
       return this.#items
     }
 
-    static create ({ items, totalCount, from, size }) {
+    static create ({ items, totalCount, from, size, options }) {
       const searchResult = new SearchResult()
       searchResult.setItems(items)
       searchResult.setTotalCount(totalCount)
       searchResult.setFrom(from)
       searchResult.setSize(size)
+      searchResult.setOptions(options)
 
       return searchResult
     }
