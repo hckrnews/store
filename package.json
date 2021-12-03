@@ -1,11 +1,14 @@
 {
     "name": "@hckrnews/store",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "",
     "main": "./src/store.js",
     "files": [
         "src/store.js",
-        "src/search-result.js"
+        "src/search-result.js",
+        "src/enums/sort-direction.js",
+        "src/models/search.js",
+        "src/schemas/search.js"
     ],
     "scripts": {
         "lint": "standard src",
@@ -50,5 +53,10 @@
     },
     "hckrstandard": {
         "parser": "@babel/eslint-parser"
+    },
+    "dependencies": {
+        "@hckrnews/arrays": "^2.0.3",
+        "@hckrnews/enum": "^1.4.6",
+        "@hckrnews/objects": "^3.3.9"
     }
 }
