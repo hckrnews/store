@@ -1,4 +1,8 @@
 import SearchResult from './search-result.js'
+import Search from './models/search.js'
+import SortDirection from './enums/sort-direction.js'
+import filterItems from './filter-items.js'
+import sortItems from './sort-items.js'
 
 class Store {
     #items = []
@@ -21,10 +25,20 @@ class Store {
       this.#items = this.#items.filter((item) => item[key] !== data[key])
     }
 
-    search ({ page = 0, size = 10 } = {}) {
-      const from = size * page
-      const result = this.#items.slice(from, from + size)
-      return SearchResult.create({ items: result, totalCount: this.totalCount(), from, size })
+    search ({ page = 0, size = 10, filters = {}, sortColumn = 'id', sortDirection = 'asc' } = {}) {
+      const search = Search.create({
+        page,
+        size,
+        filters,
+        sortColumn,
+        sortDirection: SortDirection.create(sortDirection)
+      })
+
+      const from = search.size * search.page
+      const result = this.#items.slice(from, from + search.size)
+      const sortedResult = sortItems({ items: result, searchData: search })
+      const filteredItems = filterItems({ items: sortedResult, match: filters })
+      return SearchResult.create({ items: filteredItems, totalCount: this.totalCount(), from, size: search.size })
     }
 
     totalCount () {
