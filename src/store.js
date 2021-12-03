@@ -21,7 +21,8 @@ class Store {
       this.#items = this.#items.filter((item) => item[key] !== data[key])
     }
 
-    search ({ from = 0, size = 10 } = {}) {
+    search ({ page = 0, size = 10 } = {}) {
+      const from = size * page
       const result = this.#items.slice(from, from + size)
       return SearchResult.create({ items: result, totalCount: this.totalCount(), from, size })
     }
