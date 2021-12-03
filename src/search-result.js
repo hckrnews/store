@@ -32,8 +32,16 @@ class SearchResult {
       return this.#from
     }
 
+    get page () {
+      return this.#from / this.#size
+    }
+
     get size () {
       return this.#size
+    }
+
+    get items () {
+      return this.#items
     }
 
     valueOf () {
